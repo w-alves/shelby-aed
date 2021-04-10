@@ -12,9 +12,6 @@ def main():
     st.sidebar.info(
         "This project is for educational purposes only and is licensed under the MIT license. Copyright (c) 2020 Lucas Leonardo, Wesley Alves"
     )
-    st.sidebar.info(
-        "Dataset fornecido por John Burkardt, do Departamento de Computação Cientifica - Florida State University. Você pode baixar os dados [aqui](https://people.sc.fsu.edu/~jburkardt/datasets/cities/cities.html)"
-    )
 
     st.title('Shelby | Personal persuasion assistant')
     st.write("**Original dataset description:**")
