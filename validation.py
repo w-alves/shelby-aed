@@ -5,7 +5,7 @@ import networkx as nx
 from utils.data_structures import Graph, MinHeap
 from utils.datagen import DataGenerator
 
-test_cases = [(random.randint(1, 2538), random.randint(1, 2538)) for _ in range(1000)]
+test_cases = [(random.randint(1, 2539), random.randint(1, 2539)) for _ in range(1000)]
 
 start = time.time()
 

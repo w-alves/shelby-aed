@@ -31,8 +31,8 @@ def main():
     adjacency_list, n = datagen.get_data()
     network = Graph(adjacency_list, n)
 
-    id1 = st.selectbox(options=list(range(1, n)), label='First ID')
-    id2 = st.selectbox(options=list(range(1, n)), label='Second ID')
+    id1 = st.selectbox(options=list(range(1, n+1)), label='First ID')
+    id2 = st.selectbox(options=list(range(1, n+1)), label='Second ID')
 
     if st.button('Find the weakest link between the two people:'):
         dist, path = network.minimal_path(id1, id2)

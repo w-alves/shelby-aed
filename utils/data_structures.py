@@ -51,9 +51,9 @@ class Graph:
         self.vertices = n
 
     def minimal_path(self, start, end):
-        distances = {k: np.inf for k in range(self.vertices)}
+        distances = {k: np.inf for k in range(self.vertices+1)}
         distances[start] = 0
-        previous = [-1]*self.vertices
+        previous = [-1]*(self.vertices+1)
 
         distance_from_source = MinHeap()
         distance_from_source.insert((start, 0))
