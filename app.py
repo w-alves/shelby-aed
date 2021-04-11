@@ -29,13 +29,13 @@ def main():
 
     datagen = DataGenerator('src/data.tsv')
     adjacency_list, n = datagen.get_data()
-    cities_network = Graph(adjacency_list, n)
+    network = Graph(adjacency_list, n)
 
     id1 = st.selectbox(options=list(range(1, n)), label='First ID')
     id2 = st.selectbox(options=list(range(1, n)), label='Second ID')
 
     if st.button('Find the weakest link between the two people:'):
-        dist, path = cities_network.minimal_path(id1, id2)
+        dist, path = network.minimal_path(id1, id2)
         if dist == np.inf:
             st.error(f"There is no possible link between {id1} and {id2}.")
         elif dist == 0:

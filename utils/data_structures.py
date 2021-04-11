@@ -48,11 +48,13 @@ class MinHeap:
 class Graph:
     def __init__(self, adjacency_list, n):
         self.graph =  adjacency_list
-        self.distances =  {k: np.inf for k in range(n)}
-        self.previous = [-1]*n
+        self.vertices = n
 
     def minimal_path(self, start, end):
-        self.distances[start] = 0
+        distances = {k: np.inf for k in range(self.vertices)}
+        distances[start] = 0
+        previous = [-1]*self.vertices
+
         distance_from_source = MinHeap()
         distance_from_source.insert((start, 0))
 
@@ -62,12 +64,12 @@ class Graph:
             if node == end:
                 break
             
-            if dist <= self.distances[node]:
+            if dist <= distances[node]:
                 for adjnode, length_to_adjnode in self.graph[node]:
                     new_dist = dist + length_to_adjnode
                     
-                    if self.distances[adjnode] > new_dist:
-                        self.previous[adjnode], self.distances[adjnode] = node, new_dist
+                    if distances[adjnode] > new_dist:
+                        previous[adjnode], distances[adjnode] = node, new_dist
                         distance_from_source.insert((adjnode, new_dist))
 
             element = distance_from_source.delete_min()
@@ -76,9 +78,9 @@ class Graph:
         vertex = end
         while vertex != -1:
             path_list.append(vertex)
-            vertex = self.previous[vertex]
+            vertex = previous[vertex]
         path_list.reverse()
         
         path_list = list(map(str, path_list))
 
-        return self.distances[end], path_list
+        return distances[end], path_list
